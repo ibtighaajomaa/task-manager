@@ -1,0 +1,81 @@
+<div class="dashboard-container">
+  <header>
+    <div class="logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="14" stroke="url(#logo_grad)" stroke-width="4"/>
+        <path d="M10 16L14 20L22 12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs>
+          <linearGradient id="logo_grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#007aff"/>
+            <stop offset="1" stop-color="#5856d6"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      TaskManager Pro
+    </div>
+    
+    <div class="user-profile">
+      <div class="avatar">S</div>
+    </div>
+  </header>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">Total Tasks</div>
+      <div class="stat-value">{{ taskService.tasks().length }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Completed</div>
+      <div class="stat-value">{{ taskService.completedTasks().length }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Pending</div>
+      <div class="stat-value">{{ taskService.pendingTasksCount() }}</div>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <aside>
+      <app-task-form />
+    </aside>
+
+    <section>
+      <div class="section-header">
+        <h2>Your Tasks</h2>
+        <div class="filters">
+          <!-- Filters could be added here -->
+        </div>
+      </div>
+      
+      <app-task-list />
+    </section>
+  </main>
+</div>
+
+<style>
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+</style>
+
+<router-outlet />
